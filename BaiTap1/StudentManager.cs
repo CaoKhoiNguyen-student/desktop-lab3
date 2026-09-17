@@ -19,13 +19,13 @@ namespace BaiTap1
             listStudents = StudentService.DocFile(filePath);
         }
 
-        // Tự động sao lưu lại tập tin khi có thay đổi
+     
         private void SaveChanges()
         {
             StudentService.LuuFile(filePath, listStudents);
         }
 
-        // a. Thêm hoặc Cập nhật thông tin sinh viên (nếu trùng MSSV thì Cập nhật, chưa có thì Thêm mới)
+        //Thêm hoặc Cập nhật thông tin sinh viên (nếu trùng MSSV thì Cập nhật, chưa có thì Thêm mới)
         public bool AddOrUpdate(Student student, out string message)
         {
             if (!student.IsValid(out message))
@@ -37,7 +37,7 @@ namespace BaiTap1
 
             if (existingStudent != null)
             {
-                // Cập nhật thông tin
+                 
                 existingStudent.HoTenLot = student.HoTenLot;
                 existingStudent.Ten = student.Ten;
                 existingStudent.NgaySinh = student.NgaySinh;
@@ -51,7 +51,7 @@ namespace BaiTap1
             }
             else
             {
-                // Thêm mới
+                 
                 listStudents.Add(student);
                 message = "Thêm sinh viên mới thành công!";
             }

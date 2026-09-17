@@ -179,6 +179,11 @@
             // 
             this.cboLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLop.FormattingEnabled = true;
+            this.cboLop.Items.AddRange(new object[] {
+            "CTK43",
+            "CTK44",
+            "CTK45",
+            "CTK46"});
             this.cboLop.Location = new System.Drawing.Point(840, 158);
             this.cboLop.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cboLop.Name = "cboLop";
@@ -266,7 +271,7 @@
             this.clbMonHoc.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.clbMonHoc.MultiColumn = true;
             this.clbMonHoc.Name = "clbMonHoc";
-            this.clbMonHoc.Size = new System.Drawing.Size(956, 116);
+            this.clbMonHoc.Size = new System.Drawing.Size(956, 144);
             this.clbMonHoc.TabIndex = 20;
             // 
             // btnTimKiem
@@ -278,6 +283,7 @@
             this.btnTimKiem.TabIndex = 21;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // btnThemMoi
             // 
@@ -288,6 +294,7 @@
             this.btnThemMoi.TabIndex = 22;
             this.btnThemMoi.Text = "Thêm mới";
             this.btnThemMoi.UseVisualStyleBackColor = true;
+            this.btnThemMoi.Click += new System.EventHandler(this.btnThemMoi_Click);
             // 
             // btnCapNhat
             // 
@@ -298,6 +305,7 @@
             this.btnCapNhat.TabIndex = 23;
             this.btnCapNhat.Text = "Cập nhật";
             this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
             // btnThoat
             // 
@@ -308,6 +316,7 @@
             this.btnThoat.TabIndex = 24;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // grpDanhSach
             // 
@@ -340,6 +349,7 @@
             this.dgvDanhSach.RowHeadersWidth = 82;
             this.dgvDanhSach.Size = new System.Drawing.Size(1158, 406);
             this.dgvDanhSach.TabIndex = 0;
+            this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
             // 
             // colMSSV
             // 
@@ -431,6 +441,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nhập thông tin sinh viên";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grpDanhSach.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).EndInit();
