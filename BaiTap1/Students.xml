@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStudent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Student>
+		<MSSV>2010001</MSSV>
+		<HoTenLot>Nguyễn Văn</HoTenLot>
+		<Ten>An</Ten>
+		<NgaySinh>2002-05-15T00:00:00</NgaySinh>
+		<GioiTinh>Nam</GioiTinh>
+		<Lop>CTK44</Lop>
+		<CMND>123456789</CMND>
+		<SoDienThoai>0901234567</SoDienThoai>
+		<DiaChi>123 Lê Lợi, Q.1, TP.HCM</DiaChi>
+		<DanhSachMonHoc>
+			<string>Mạng máy tính</string>
+			<string>Hệ điều hành</string>
+		</DanhSachMonHoc>
+	</Student>
+</ArrayOfStudent>

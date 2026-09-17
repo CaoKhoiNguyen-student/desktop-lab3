@@ -40,11 +40,53 @@ namespace BaiTap1
             DanhSachMonHoc = dsMonHoc ?? new List<string>();
         }
 
+        
+        //private string GetEnrollmentYe(string className)
+        //{
+        //    if (string.IsNullOrWhiteSpace(className)) { return null; }
+        //    string res = "";
+        //    foreach(var c in className)
+        //    {
+        //        if (c >= '0' && c <= '9') res += c;
+        //        //vì dữ liệu mẫu có dạng CTK44 -> khoá 44 nên chỉ lấy cặp số gần nhau nên break luôn
+        //        else if (res.Length > 0) break;
+        //    }
+        //    return res;
+            
+        //}
+
+
+        private string ExtractYearFromClass(string className)
+        {
+            if (string.IsNullOrWhiteSpace(className)) return "";
+            //var match = GetEnrollmentYe(className);
+            var match = Regex.Match(className, @"\d+");
+            if (match.Success && int.TryParse(match.Value, out int khoasaudi))
+            {
+                // Quy ước: Khóa 1 bắt đầu từ năm 1977 (Đại học Đà Lạt) hoặc tùy biến công thức khóa học của trường
+                int baseYear = 1976 + khoasaudi;
+                return (baseYear % 100).ToString("D2");
+            }
+            return "";
+        }
+
         public bool IsValid(out string errorMessage)
         {
             if (string.IsNullOrWhiteSpace(MSSV) || MSSV.Length != 7 || !MSSV.All(char.IsDigit))
             {
                 errorMessage = "MSSV phải bao gồm đúng 7 chữ số!";
+                return false;
+            }
+
+            if (!MSSV.Substring(2, 2).Equals("10"))
+            {
+                errorMessage = "đề bài yêu cầu MSSV có dạng AABBCCC trong đó BB = 10";
+            }
+
+            string namLop = ExtractYearFromClass(Lop);
+            if (!string.IsNullOrEmpty(namLop) && !MSSV.StartsWith(namLop))
+            {
+                errorMessage = $"MSSV phải bắt đầu bằng '{namLop}' tương ứng với năm nhập học của lớp {Lop}!";
                 return false;
             }
 
