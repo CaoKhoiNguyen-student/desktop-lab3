@@ -1,0 +1,6 @@
+# Bỏ qua thư mục cấu hình của Visual Studio
+.vs/
+
+# Bỏ qua các tệp build
+bin/
+obj/

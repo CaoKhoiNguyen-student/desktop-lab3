@@ -1,0 +1,4 @@
+2011001|Nguyễn Văn|An|2002-05-15|Nam|CTK44|123456789|0901234567|123 Lê Lợi, Q.1, TP.HCM|Mạng máy tính,Hệ điều hành
+2011002|Trần Thị|Bình|2002-08-20|Nữ|CTK44|987654321|0987654321|456 Nguyễn Huệ, Q.3, TP.HCM|Đồ án cơ sở,Phương pháp NCKH
+2011003|Lê Hoàng|Cường|2001-11-10|Nam|CTK43|456789123|0912345678|789 Trần Hưng Đạo, Q.5, TP.HCM|Lập trình CSDL,Lập trình mạng
+2011004|Phạm Thị|Dung|2002-02-28|Nữ|CTK44|321654987|0934567890|321 Võ Văn Tần, Q.3, TP.HCM|An toàn và bảo mật hệ thống
