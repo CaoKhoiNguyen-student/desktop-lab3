@@ -101,6 +101,7 @@ namespace BaiTap1
             if (!MSSV.Substring(2, 2).Equals("10"))
             {
                 errorMessage = "đề bài yêu cầu MSSV có dạng AABBCCC trong đó BB = 10";
+                return false;
             }
 
             string namLop = ExtractYearFromClass(Lop);

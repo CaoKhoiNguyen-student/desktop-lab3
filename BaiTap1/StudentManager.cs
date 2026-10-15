@@ -84,18 +84,27 @@ namespace BaiTap1
         //    return query.ToList();
         //}
 
+
+        // ham nay hoat dong nhung co phan biet hoa thuong
+        //public bool Equal(string bienLon, string bienCon)
+        //{
+        //    if (string.IsNullOrEmpty(bienLon) || string.IsNullOrEmpty(bienCon))
+        //        return false;
+        //    else
+        //    {
+        //        if (bienLon.Contains(bienCon)) return true;
+        //        return false;
+        //    }
+            
+        //}
+
+
         public bool Equal(string bienLon, string bienCon)
         {
             if (string.IsNullOrEmpty(bienLon) || string.IsNullOrEmpty(bienCon))
                 return false;
-            else
-            {
-                if (bienLon.Contains(bienCon)) return true;
-                return false;
-            }
-            
+            return bienLon.IndexOf(bienCon, StringComparison.OrdinalIgnoreCase) >= 0;
         }
-
         public List<Student> Search(string mssv = null, string ten = null, string lop = null)
         {
             var res = new List<Student>();

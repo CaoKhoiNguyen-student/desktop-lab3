@@ -37,8 +37,8 @@ namespace BaiTap1
             clbMonHoc.ContextMenuStrip = ctxMonHoc;
 
 
-            lvDanhSach.FullRowSelect = true;
-            lvDanhSach.MultiSelect = true;
+            //lvDanhSach.FullRowSelect = true;
+            //lvDanhSach.MultiSelect = true;
 
             ContextMenuStrip ctxGrid = new ContextMenuStrip();
             ctxGrid.Items.Add("Xóa sinh viên đã chọn", null, CtxXoaSinhVien_Click);
@@ -87,29 +87,50 @@ namespace BaiTap1
         }
 
 
+        //private void CtxXoaSinhVien_Click(object sender, EventArgs e)
+        //{
+        //    if (lvDanhSach.SelectedItems.Count == 0)
+        //    {
+        //        MessageBox.Show("Vui lòng chọn ít nhất 1 sinh viên để xóa!", "Thông báo");
+        //        return;
+        //    }
+
+        //    var dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa {lvDanhSach.SelectedItems.Count} sinh viên đã chọn?",
+        //        "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+        //    if (dialogResult == DialogResult.Yes)
+        //    {
+        //        List<string> listMSSV = new List<string>();
+        //        foreach (ListViewItem item in lvDanhSach.SelectedItems)
+        //        {
+        //            if (!string.IsNullOrEmpty(item.Text))
+        //                listMSSV.Add(item.Text);
+        //        }
+
+        //        studentManager.DeleteMultiple(listMSSV);
+        //        HienThiDanhSachGrid(studentManager.ListStudents);
+        //        MessageBox.Show("Đã xóa thành công!", "Thông báo");
+        //    }
+        //}
+
         private void CtxXoaSinhVien_Click(object sender, EventArgs e)
         {
-            if (lvDanhSach.SelectedItems.Count == 0)
+            if (lvDanhSach.CheckedItems.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn ít nhất 1 sinh viên để xóa!", "Thông báo");
+                MessageBox.Show("Vui lòng tích chọn ít nhất 1 sinh viên để xóa!", "Thông báo");
                 return;
             }
-
-            var dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa {lvDanhSach.SelectedItems.Count} sinh viên đã chọn?",
+            var dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa {lvDanhSach.CheckedItems.Count} sinh viên đã chọn?",
                 "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
             if (dialogResult == DialogResult.Yes)
             {
                 List<string> listMSSV = new List<string>();
-                foreach (ListViewItem item in lvDanhSach.SelectedItems)
+                foreach (ListViewItem item in lvDanhSach.CheckedItems)
                 {
-                    if (!string.IsNullOrEmpty(item.Text))
-                        listMSSV.Add(item.Text);
+                    listMSSV.Add(item.Text);
                 }
-
                 studentManager.DeleteMultiple(listMSSV);
                 HienThiDanhSachGrid(studentManager.ListStudents);
-                MessageBox.Show("Đã xóa thành công!", "Thông báo");
             }
         }
 
