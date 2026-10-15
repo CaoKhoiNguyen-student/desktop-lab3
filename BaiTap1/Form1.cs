@@ -16,6 +16,7 @@ namespace BaiTap1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cboLop.SelectedIndex = 0;
             try
             {
                 
@@ -48,9 +49,18 @@ namespace BaiTap1
         private void CtxThemMon_Click(object sender, EventArgs e)
         {
             string monMoi = Microsoft.VisualBasic.Interaction.InputBox("Nhập tên môn học mới:", "Thêm môn học", "");
-            if (!string.IsNullOrWhiteSpace(monMoi) && !clbMonHoc.Items.Contains(monMoi))
+            while (!string.IsNullOrWhiteSpace(monMoi))
             {
-                clbMonHoc.Items.Add(monMoi, true);
+                if (clbMonHoc.Items.Contains(monMoi))
+                {
+                    MessageBox.Show("Thong bao", $"mon hoc {monMoi}  da on tai", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    monMoi = Microsoft.VisualBasic.Interaction.InputBox("Nhập tên môn học mới:", "Thêm môn học", "");
+                }
+                else
+                {
+                    clbMonHoc.Items.Add(monMoi, true);
+                    break;
+                }
             }
         }
 
@@ -58,11 +68,21 @@ namespace BaiTap1
         {
             if (clbMonHoc.SelectedIndex != -1)
             {
-                clbMonHoc.Items.RemoveAt(clbMonHoc.SelectedIndex);
+                // 1. Lấy tên môn học đang được chọn
+                string tenMon = clbMonHoc.SelectedItem.ToString();
+
+                // 2. Hỏi xác nhận người dùng có muốn xóa không
+                DialogResult result = MessageBox.Show($"Bạn có chắc muốn xóa '{tenMon}' đã chọn không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                // 3. Nếu chọn Yes thì mới tiến hành xóa
+                if (result == DialogResult.Yes)
+                {
+                    clbMonHoc.Items.RemoveAt(clbMonHoc.SelectedIndex);
+                }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn 1 môn trong danh sách để xóa!", "Thông báo");
+                MessageBox.Show("Vui lòng chọn 1 môn trong danh sách để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -160,6 +180,8 @@ namespace BaiTap1
                 MessageBox.Show(msg, "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
         private bool KiemTraRong()
         {
             if (string.IsNullOrWhiteSpace(txtMSSV.Text) ||
@@ -227,6 +249,41 @@ namespace BaiTap1
             {
                 e.Cancel = true;  
             }
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            Reload();
+            HienThiDanhSachGrid(studentManager.ListStudents);
+        }
+
+        private void Reload()
+        {
+            // 1. Xóa trắng các TextBox (dùng .Clear() hoặc .Text = "")
+            txtMSSV.Clear();
+            txtHoTenLot.Clear();
+            txtTen.Clear();
+            txtCMND.Clear();
+            txtSDT.Clear();
+            txtDiaChi.Clear();
+
+            // 2. Reset các RadioButton, DateTimePicker và ComboBox
+            rdoNam.Checked = false;
+            rdoNu.Checked = false;
+            dtpNgaySinh.Value = DateTime.Now;
+            cboLop.SelectedIndex = -1; // Bỏ chọn lớp
+
+            // 3. Bỏ tích chọn tất cả các môn học trong CheckedListBox
+            for (int i = 0; i < clbMonHoc.Items.Count; i++)
+            {
+                clbMonHoc.SetItemChecked(i, false);
+            }
+
+            // 4. Bỏ chọn dòng/ô đang được chọn trên DataGridView
+            dgvDanhSach.ClearSelection();
+
+            // 5. Đưa con trỏ chuột về lại ô MSSV
+            txtMSSV.Focus();
         }
     }
 }

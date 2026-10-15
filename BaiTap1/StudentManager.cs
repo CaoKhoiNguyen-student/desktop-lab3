@@ -60,28 +60,77 @@ namespace BaiTap1
             return true;
         }
 
-        // b. Tìm kiếm sinh viên theo Tên, Lớp, MSSV
+        //// b. Tìm kiếm sinh viên theo Tên, Lớp, MSSV
+        //public List<Student> Search(string mssv = null, string ten = null, string lop = null)
+        //{
+        //    var query = listStudents.AsEnumerable();
+
+        //    if (!string.IsNullOrWhiteSpace(mssv))
+        //    {
+        //        query = query.Where(s => s.MSSV.Contains(mssv.Trim()));
+        //    }
+
+        //    if (!string.IsNullOrWhiteSpace(ten))
+        //    {
+        //        query = query.Where(s => s.Ten.IndexOf(ten.Trim(), StringComparison.OrdinalIgnoreCase) >= 0 ||
+        //                                 s.HoVaTen().IndexOf(ten.Trim(), StringComparison.OrdinalIgnoreCase) >= 0);
+        //    }
+
+        //    if (!string.IsNullOrWhiteSpace(lop))
+        //    {
+        //        query = query.Where(s => s.Lop.Equals(lop.Trim(), StringComparison.OrdinalIgnoreCase));
+        //    }
+
+        //    return query.ToList();
+        //}
+
+        public bool Equal(string bienLon, string bienCon)
+        {
+            if (string.IsNullOrEmpty(bienLon) || string.IsNullOrEmpty(bienCon))
+                return false;
+            else
+            {
+                if (bienLon.Contains(bienCon)) return true;
+                return false;
+            }
+            
+        }
+
         public List<Student> Search(string mssv = null, string ten = null, string lop = null)
         {
-            var query = listStudents.AsEnumerable();
+            var res = new List<Student>();
 
-            if (!string.IsNullOrWhiteSpace(mssv))
+            string searchMssv = mssv?.Trim();
+            string searchTen = ten?.Trim();
+            string searchLop = lop?.Trim();
+
+            foreach (Student s in listStudents)
             {
-                query = query.Where(s => s.MSSV.Contains(mssv.Trim()));
+                // 1. Nếu ô MSSV CÓ NHẬP mà MSSV của sinh viên KHÔNG CHỨA chuỗi tìm kiếm -> Bỏ qua
+                if (!string.IsNullOrEmpty(searchMssv) && !Equal(s.MSSV, searchMssv))
+                {
+                    continue;
+                }
+
+                // 2. Nếu ô Tên CÓ NHẬP mà Tên KHÔNG CHỨA chuỗi tìm kiếm -> Bỏ qua
+                if (!string.IsNullOrEmpty(searchTen)
+                    && !Equal(s.Ten, searchTen)
+                    && !Equal(s.HoVaTen(), searchTen))
+                {
+                    continue;
+                }
+
+                // 3. Nếu ô Lớp CÓ NHẬP mà Lớp KHÔNG CHỨA chuỗi tìm kiếm -> Bỏ qua
+                if (!string.IsNullOrEmpty(searchLop) && !Equal(s.Lop, searchLop))
+                {
+                    continue;
+                }
+
+                // Đạt tất cả điều kiện -> Thêm vào danh sách
+                res.Add(s);
             }
 
-            if (!string.IsNullOrWhiteSpace(ten))
-            {
-                query = query.Where(s => s.Ten.IndexOf(ten.Trim(), StringComparison.OrdinalIgnoreCase) >= 0 ||
-                                         s.HoVaTen().IndexOf(ten.Trim(), StringComparison.OrdinalIgnoreCase) >= 0);
-            }
-
-            if (!string.IsNullOrWhiteSpace(lop))
-            {
-                query = query.Where(s => s.Lop.Equals(lop.Trim(), StringComparison.OrdinalIgnoreCase));
-            }
-
-            return query.ToList();
+            return res;
         }
 
         // c. Xóa 1 sinh viên theo MSSV

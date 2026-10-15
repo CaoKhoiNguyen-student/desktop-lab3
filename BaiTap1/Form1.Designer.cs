@@ -22,7 +22,7 @@
         private void InitializeComponent()
         {
             this.lblMSSV = new System.Windows.Forms.Label();
-            this.txtMSSV = new System.Windows.Forms.TextBox();
+            this.txtMSSV1 = new System.Windows.Forms.TextBox();
             this.lblHoTenLot = new System.Windows.Forms.Label();
             this.txtHoTenLot = new System.Windows.Forms.TextBox();
             this.lblGioiTinh = new System.Windows.Forms.Label();
@@ -37,7 +37,7 @@
             this.lblCMND = new System.Windows.Forms.Label();
             this.txtCMND = new System.Windows.Forms.TextBox();
             this.lblSDT = new System.Windows.Forms.Label();
-            this.txtSDT = new System.Windows.Forms.TextBox();
+            this.txtSDT1 = new System.Windows.Forms.TextBox();
             this.lblDiaChi = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.lblMonHoc = new System.Windows.Forms.Label();
@@ -56,6 +56,11 @@
             this.colCMND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReload = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtMSSV = new System.Windows.Forms.MaskedTextBox();
+            this.txtSDT = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.grpDanhSach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
@@ -70,13 +75,13 @@
             this.lblMSSV.TabIndex = 0;
             this.lblMSSV.Text = "MSSV :";
             // 
-            // txtMSSV
+            // txtMSSV1
             // 
-            this.txtMSSV.Location = new System.Drawing.Point(240, 42);
-            this.txtMSSV.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.txtMSSV.Name = "txtMSSV";
-            this.txtMSSV.Size = new System.Drawing.Size(356, 31);
-            this.txtMSSV.TabIndex = 1;
+            this.txtMSSV1.Location = new System.Drawing.Point(-500, 494);
+            this.txtMSSV1.Margin = new System.Windows.Forms.Padding(6);
+            this.txtMSSV1.Name = "txtMSSV1";
+            this.txtMSSV1.Size = new System.Drawing.Size(356, 31);
+            this.txtMSSV1.TabIndex = 1;
             // 
             // lblHoTenLot
             // 
@@ -91,7 +96,7 @@
             // txtHoTenLot
             // 
             this.txtHoTenLot.Location = new System.Drawing.Point(240, 100);
-            this.txtHoTenLot.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtHoTenLot.Margin = new System.Windows.Forms.Padding(6);
             this.txtHoTenLot.Name = "txtHoTenLot";
             this.txtHoTenLot.Size = new System.Drawing.Size(356, 31);
             this.txtHoTenLot.TabIndex = 6;
@@ -110,18 +115,19 @@
             // 
             this.rdoNam.AutoSize = true;
             this.rdoNam.Location = new System.Drawing.Point(840, 44);
-            this.rdoNam.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.rdoNam.Margin = new System.Windows.Forms.Padding(6);
             this.rdoNam.Name = "rdoNam";
-            this.rdoNam.Size = new System.Drawing.Size(27, 26);
+            this.rdoNam.Size = new System.Drawing.Size(87, 29);
             this.rdoNam.TabIndex = 3;
             this.rdoNam.TabStop = true;
+            this.rdoNam.Text = "Nam";
             this.rdoNam.UseVisualStyleBackColor = true;
             // 
             // rdoNu
             // 
             this.rdoNu.AutoSize = true;
             this.rdoNu.Location = new System.Drawing.Point(980, 44);
-            this.rdoNu.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.rdoNu.Margin = new System.Windows.Forms.Padding(6);
             this.rdoNu.Name = "rdoNu";
             this.rdoNu.Size = new System.Drawing.Size(70, 29);
             this.rdoNu.TabIndex = 4;
@@ -141,7 +147,7 @@
             // txtTen
             // 
             this.txtTen.Location = new System.Drawing.Point(840, 100);
-            this.txtTen.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtTen.Margin = new System.Windows.Forms.Padding(6);
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(356, 31);
             this.txtTen.TabIndex = 8;
@@ -160,7 +166,7 @@
             // 
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNgaySinh.Location = new System.Drawing.Point(240, 158);
-            this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(6);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
             this.dtpNgaySinh.Size = new System.Drawing.Size(356, 31);
             this.dtpNgaySinh.TabIndex = 10;
@@ -185,7 +191,7 @@
             "CTK45",
             "CTK46"});
             this.cboLop.Location = new System.Drawing.Point(840, 158);
-            this.cboLop.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cboLop.Margin = new System.Windows.Forms.Padding(6);
             this.cboLop.Name = "cboLop";
             this.cboLop.Size = new System.Drawing.Size(356, 33);
             this.cboLop.TabIndex = 12;
@@ -203,7 +209,7 @@
             // txtCMND
             // 
             this.txtCMND.Location = new System.Drawing.Point(240, 215);
-            this.txtCMND.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtCMND.Margin = new System.Windows.Forms.Padding(6);
             this.txtCMND.Name = "txtCMND";
             this.txtCMND.Size = new System.Drawing.Size(356, 31);
             this.txtCMND.TabIndex = 14;
@@ -218,13 +224,13 @@
             this.lblSDT.TabIndex = 15;
             this.lblSDT.Text = "Số ĐT :";
             // 
-            // txtSDT
+            // txtSDT1
             // 
-            this.txtSDT.Location = new System.Drawing.Point(840, 215);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(356, 31);
-            this.txtSDT.TabIndex = 16;
+            this.txtSDT1.Location = new System.Drawing.Point(528, 535);
+            this.txtSDT1.Margin = new System.Windows.Forms.Padding(6);
+            this.txtSDT1.Name = "txtSDT1";
+            this.txtSDT1.Size = new System.Drawing.Size(356, 31);
+            this.txtSDT1.TabIndex = 16;
             // 
             // lblDiaChi
             // 
@@ -239,7 +245,7 @@
             // txtDiaChi
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(240, 273);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(6);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(956, 31);
             this.txtDiaChi.TabIndex = 18;
@@ -268,7 +274,7 @@
             "Lập trình mạng",
             "An toàn và bảo mật hệ thống"});
             this.clbMonHoc.Location = new System.Drawing.Point(240, 331);
-            this.clbMonHoc.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.clbMonHoc.Margin = new System.Windows.Forms.Padding(6);
             this.clbMonHoc.MultiColumn = true;
             this.clbMonHoc.Name = "clbMonHoc";
             this.clbMonHoc.Size = new System.Drawing.Size(956, 144);
@@ -277,7 +283,7 @@
             // btnTimKiem
             // 
             this.btnTimKiem.Location = new System.Drawing.Point(460, 481);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(6);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(150, 44);
             this.btnTimKiem.TabIndex = 21;
@@ -288,7 +294,7 @@
             // btnThemMoi
             // 
             this.btnThemMoi.Location = new System.Drawing.Point(640, 481);
-            this.btnThemMoi.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnThemMoi.Margin = new System.Windows.Forms.Padding(6);
             this.btnThemMoi.Name = "btnThemMoi";
             this.btnThemMoi.Size = new System.Drawing.Size(150, 44);
             this.btnThemMoi.TabIndex = 22;
@@ -299,7 +305,7 @@
             // btnCapNhat
             // 
             this.btnCapNhat.Location = new System.Drawing.Point(820, 481);
-            this.btnCapNhat.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnCapNhat.Margin = new System.Windows.Forms.Padding(6);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(150, 44);
             this.btnCapNhat.TabIndex = 23;
@@ -310,7 +316,7 @@
             // btnThoat
             // 
             this.btnThoat.Location = new System.Drawing.Point(1000, 481);
-            this.btnThoat.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(6);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(150, 44);
             this.btnThoat.TabIndex = 24;
@@ -322,9 +328,9 @@
             // 
             this.grpDanhSach.Controls.Add(this.dgvDanhSach);
             this.grpDanhSach.Location = new System.Drawing.Point(40, 548);
-            this.grpDanhSach.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grpDanhSach.Margin = new System.Windows.Forms.Padding(6);
             this.grpDanhSach.Name = "grpDanhSach";
-            this.grpDanhSach.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grpDanhSach.Padding = new System.Windows.Forms.Padding(6);
             this.grpDanhSach.Size = new System.Drawing.Size(1170, 442);
             this.grpDanhSach.TabIndex = 25;
             this.grpDanhSach.TabStop = false;
@@ -344,8 +350,9 @@
             this.colDiaChi});
             this.dgvDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDanhSach.Location = new System.Drawing.Point(6, 30);
-            this.dgvDanhSach.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dgvDanhSach.Margin = new System.Windows.Forms.Padding(6);
             this.dgvDanhSach.Name = "dgvDanhSach";
+            this.dgvDanhSach.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvDanhSach.RowHeadersWidth = 82;
             this.dgvDanhSach.Size = new System.Drawing.Size(1158, 406);
             this.dgvDanhSach.TabIndex = 0;
@@ -407,11 +414,58 @@
             this.colDiaChi.Name = "colDiaChi";
             this.colDiaChi.Width = 200;
             // 
+            // btnReload
+            // 
+            this.btnReload.Location = new System.Drawing.Point(240, 481);
+            this.btnReload.Margin = new System.Windows.Forms.Padding(6);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(150, 44);
+            this.btnReload.TabIndex = 26;
+            this.btnReload.Text = "lam moi";
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(700, 100);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 25);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Ten:";
+            // 
+            // txtMSSV
+            // 
+            this.txtMSSV.Location = new System.Drawing.Point(240, 45);
+            this.txtMSSV.Mask = "0000000";
+            this.txtMSSV.Name = "txtMSSV";
+            this.txtMSSV.Size = new System.Drawing.Size(104, 31);
+            this.txtMSSV.TabIndex = 28;
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Location = new System.Drawing.Point(840, 221);
+            this.txtSDT.Mask = "0000000000";
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(156, 31);
+            this.txtSDT.TabIndex = 29;
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(131, 446);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 31);
+            this.maskedTextBox1.TabIndex = 30;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 1019);
+            this.Controls.Add(this.txtMSSV);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnReload);
             this.Controls.Add(this.grpDanhSach);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnCapNhat);
@@ -435,9 +489,9 @@
             this.Controls.Add(this.lblGioiTinh);
             this.Controls.Add(this.txtHoTenLot);
             this.Controls.Add(this.lblHoTenLot);
-            this.Controls.Add(this.txtMSSV);
+            this.Controls.Add(this.txtMSSV1);
             this.Controls.Add(this.lblMSSV);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nhập thông tin sinh viên";
@@ -453,7 +507,7 @@
 
 
         private System.Windows.Forms.Label lblMSSV;
-        private System.Windows.Forms.TextBox txtMSSV;
+        private System.Windows.Forms.TextBox txtMSSV1;
         private System.Windows.Forms.Label lblHoTenLot;
         private System.Windows.Forms.TextBox txtHoTenLot;
         private System.Windows.Forms.Label lblGioiTinh;
@@ -468,7 +522,7 @@
         private System.Windows.Forms.Label lblCMND;
         private System.Windows.Forms.TextBox txtCMND;
         private System.Windows.Forms.Label lblSDT;
-        private System.Windows.Forms.TextBox txtSDT;
+        private System.Windows.Forms.TextBox txtSDT1;
         private System.Windows.Forms.Label lblDiaChi;
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.Label lblMonHoc;
@@ -487,6 +541,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colCMND;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSDT;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDiaChi;
+        private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MaskedTextBox txtMSSV;
+        private System.Windows.Forms.MaskedTextBox txtSDT;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }
 

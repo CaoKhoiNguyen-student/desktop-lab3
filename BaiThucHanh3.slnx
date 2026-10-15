@@ -3,6 +3,6 @@
     <File Path=".gitignore" />
     <File Path="Students.json" />
   </Folder>
-  <Project Path="BaiTap1/BaiTap1.csproj" />
-  <Project Path="BaiTapHD/BaiTapHD.csproj" />
+  <Project Path="BaiTap1/BaiTap1.csproj" Id="7cde1c9e-e85f-45cd-ad41-bcfa0c9e8633" />
+  <Project Path="BaiTapHD/BaiTapHD.csproj" Id="cbddfe47-237f-4e26-a83b-d48302bd6429" />
 </Solution>

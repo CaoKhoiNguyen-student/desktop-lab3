@@ -40,7 +40,7 @@ namespace BaiTap1
             DanhSachMonHoc = dsMonHoc ?? new List<string>();
         }
 
-        
+
         //private string GetEnrollmentYe(string className)
         //{
         //    if (string.IsNullOrWhiteSpace(className)) { return null; }
@@ -52,20 +52,40 @@ namespace BaiTap1
         //        else if (res.Length > 0) break;
         //    }
         //    return res;
-            
+
         //}
 
 
+        //private string ExtractYearFromClass(string className)
+        //{
+        //    if (string.IsNullOrWhiteSpace(className)) return "";
+        //    //var match = GetEnrollmentYe(className);
+        //    var match = Regex.Match(className, @"\d+");
+        //    if (match.Success && int.TryParse(match.Value, out int khoasaudi))
+        //    {
+        //        // Quy ước: Khóa 1 bắt đầu từ năm 1977 (Đại học Đà Lạt) hoặc tùy biến công thức khóa học của trường
+        //        int baseYear = 1976 + khoasaudi;
+        //        return (baseYear % 100).ToString("D2");
+        //    }
+        //    return "";
+        //}
         private string ExtractYearFromClass(string className)
         {
-            if (string.IsNullOrWhiteSpace(className)) return "";
-            //var match = GetEnrollmentYe(className);
-            var match = Regex.Match(className, @"\d+");
-            if (match.Success && int.TryParse(match.Value, out int khoasaudi))
+            if (string.IsNullOrEmpty(className)) return "";
+            else
             {
-                // Quy ước: Khóa 1 bắt đầu từ năm 1977 (Đại học Đà Lạt) hoặc tùy biến công thức khóa học của trường
-                int baseYear = 1976 + khoasaudi;
-                return (baseYear % 100).ToString("D2");
+                string year = "";
+                foreach(char c in className)
+                {
+                    if(char.IsDigit(c)) year += c;
+                }
+                if(int.TryParse(year, out int n))
+                {
+                    int namNhapHoc = 1976 + n;
+                    int haiSoCuoi = namNhapHoc % 100;
+                    return haiSoCuoi.ToString("D2");
+                }
+
             }
             return "";
         }
