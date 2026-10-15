@@ -100,28 +100,25 @@ namespace BaiTap1
         {
             var res = new List<Student>();
 
-            string searchMssv = mssv?.Trim();
-            string searchTen = ten?.Trim();
-            string searchLop = lop?.Trim();
 
             foreach (Student s in listStudents)
             {
                 // 1. Nếu ô MSSV CÓ NHẬP mà MSSV của sinh viên KHÔNG CHỨA chuỗi tìm kiếm -> Bỏ qua
-                if (!string.IsNullOrEmpty(searchMssv) && !Equal(s.MSSV, searchMssv))
+                if (!string.IsNullOrEmpty(mssv) && !Equal(s.MSSV, mssv))
                 {
                     continue;
                 }
 
                 // 2. Nếu ô Tên CÓ NHẬP mà Tên KHÔNG CHỨA chuỗi tìm kiếm -> Bỏ qua
-                if (!string.IsNullOrEmpty(searchTen)
-                    && !Equal(s.Ten, searchTen)
-                    && !Equal(s.HoVaTen(), searchTen))
+                if (!string.IsNullOrEmpty(ten)
+                    && !Equal(s.Ten, ten)
+                    && !Equal(s.HoVaTen(), ten))
                 {
                     continue;
                 }
 
                 // 3. Nếu ô Lớp CÓ NHẬP mà Lớp KHÔNG CHỨA chuỗi tìm kiếm -> Bỏ qua
-                if (!string.IsNullOrEmpty(searchLop) && !Equal(s.Lop, searchLop))
+                if (!string.IsNullOrEmpty(lop) && !Equal(s.Lop, lop))
                 {
                     continue;
                 }

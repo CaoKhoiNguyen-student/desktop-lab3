@@ -1,4 +1,4 @@
-﻿namespace BaiTap1
+namespace BaiTap1
 {
     partial class Form1
     {
@@ -47,22 +47,21 @@
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.grpDanhSach = new System.Windows.Forms.GroupBox();
-            this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.colMSSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHoTenLot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCMND = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lvDanhSach = new System.Windows.Forms.ListView();
+            this.colMSSV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHoTenLot = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colNgaySinh = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colLop = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colCMND = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSDT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDiaChi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnReload = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMSSV = new System.Windows.Forms.MaskedTextBox();
             this.txtSDT = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.grpDanhSach.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMSSV
@@ -326,7 +325,7 @@
             // 
             // grpDanhSach
             // 
-            this.grpDanhSach.Controls.Add(this.dgvDanhSach);
+            this.grpDanhSach.Controls.Add(this.lvDanhSach);
             this.grpDanhSach.Location = new System.Drawing.Point(40, 548);
             this.grpDanhSach.Margin = new System.Windows.Forms.Padding(6);
             this.grpDanhSach.Name = "grpDanhSach";
@@ -336,10 +335,10 @@
             this.grpDanhSach.TabStop = false;
             this.grpDanhSach.Text = "Danh sách sinh viên";
             // 
-            // dgvDanhSach
+            // lvDanhSach
             // 
-            this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lvDanhSach.CheckBoxes = true;
+            this.lvDanhSach.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colMSSV,
             this.colHoTenLot,
             this.colTen,
@@ -348,70 +347,58 @@
             this.colCMND,
             this.colSDT,
             this.colDiaChi});
-            this.dgvDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDanhSach.Location = new System.Drawing.Point(6, 30);
-            this.dgvDanhSach.Margin = new System.Windows.Forms.Padding(6);
-            this.dgvDanhSach.Name = "dgvDanhSach";
-            this.dgvDanhSach.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dgvDanhSach.RowHeadersWidth = 82;
-            this.dgvDanhSach.Size = new System.Drawing.Size(1158, 406);
-            this.dgvDanhSach.TabIndex = 0;
-            this.dgvDanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellClick);
+            this.lvDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvDanhSach.FullRowSelect = true;
+            this.lvDanhSach.GridLines = true;
+            this.lvDanhSach.HideSelection = false;
+            this.lvDanhSach.Location = new System.Drawing.Point(6, 30);
+            this.lvDanhSach.Margin = new System.Windows.Forms.Padding(6);
+            this.lvDanhSach.Name = "lvDanhSach";
+            this.lvDanhSach.Size = new System.Drawing.Size(1158, 406);
+            this.lvDanhSach.TabIndex = 0;
+            this.lvDanhSach.UseCompatibleStateImageBehavior = false;
+            this.lvDanhSach.View = System.Windows.Forms.View.Details;
+            this.lvDanhSach.SelectedIndexChanged += new System.EventHandler(this.lvDanhSach_SelectedIndexChanged);
+            this.lvDanhSach.Click += new System.EventHandler(this.lvDanhSach_SelectedIndexChanged);
             // 
             // colMSSV
             // 
-            this.colMSSV.HeaderText = "MSSV";
-            this.colMSSV.MinimumWidth = 10;
-            this.colMSSV.Name = "colMSSV";
-            this.colMSSV.Width = 200;
+            this.colMSSV.Text = "MSSV";
+            this.colMSSV.Width = 90;
             // 
             // colHoTenLot
             // 
-            this.colHoTenLot.HeaderText = "Họ và tên lót";
-            this.colHoTenLot.MinimumWidth = 10;
-            this.colHoTenLot.Name = "colHoTenLot";
-            this.colHoTenLot.Width = 200;
+            this.colHoTenLot.Text = "Họ và tên lót";
+            this.colHoTenLot.Width = 140;
             // 
             // colTen
             // 
-            this.colTen.HeaderText = "Tên";
-            this.colTen.MinimumWidth = 10;
-            this.colTen.Name = "colTen";
-            this.colTen.Width = 200;
+            this.colTen.Text = "Tên";
+            this.colTen.Width = 80;
             // 
             // colNgaySinh
             // 
-            this.colNgaySinh.HeaderText = "Ngày sinh";
-            this.colNgaySinh.MinimumWidth = 10;
-            this.colNgaySinh.Name = "colNgaySinh";
-            this.colNgaySinh.Width = 200;
+            this.colNgaySinh.Text = "Ngày sinh";
+            this.colNgaySinh.Width = 100;
             // 
             // colLop
             // 
-            this.colLop.HeaderText = "Lớp";
-            this.colLop.MinimumWidth = 10;
-            this.colLop.Name = "colLop";
-            this.colLop.Width = 200;
+            this.colLop.Text = "Lớp";
+            this.colLop.Width = 80;
             // 
             // colCMND
             // 
-            this.colCMND.HeaderText = "Số CMND";
-            this.colCMND.MinimumWidth = 10;
-            this.colCMND.Name = "colCMND";
-            this.colCMND.Width = 200;
+            this.colCMND.Text = "Số CMND";
+            this.colCMND.Width = 100;
             // 
             // colSDT
             // 
-            this.colSDT.HeaderText = "Số điện thoại";
-            this.colSDT.MinimumWidth = 10;
-            this.colSDT.Name = "colSDT";
-            this.colSDT.Width = 200;
+            this.colSDT.Text = "Số điện thoại";
+            this.colSDT.Width = 110;
             // 
             // colDiaChi
             // 
-            this.colDiaChi.HeaderText = "Địa chỉ liên lạc";
-            this.colDiaChi.MinimumWidth = 10;
-            this.colDiaChi.Name = "colDiaChi";
+            this.colDiaChi.Text = "Địa chỉ liên lạc";
             this.colDiaChi.Width = 200;
             // 
             // btnReload
@@ -498,7 +485,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grpDanhSach.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,15 +518,15 @@
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.GroupBox grpDanhSach;
-        private System.Windows.Forms.DataGridView dgvDanhSach;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMSSV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHoTenLot;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNgaySinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLop;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCMND;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSDT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDiaChi;
+        private System.Windows.Forms.ListView lvDanhSach;
+        private System.Windows.Forms.ColumnHeader colMSSV;
+        private System.Windows.Forms.ColumnHeader colHoTenLot;
+        private System.Windows.Forms.ColumnHeader colTen;
+        private System.Windows.Forms.ColumnHeader colNgaySinh;
+        private System.Windows.Forms.ColumnHeader colLop;
+        private System.Windows.Forms.ColumnHeader colCMND;
+        private System.Windows.Forms.ColumnHeader colSDT;
+        private System.Windows.Forms.ColumnHeader colDiaChi;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox txtMSSV;

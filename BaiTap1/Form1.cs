@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -37,12 +37,12 @@ namespace BaiTap1
             clbMonHoc.ContextMenuStrip = ctxMonHoc;
 
 
-            dgvDanhSach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDanhSach.MultiSelect = true;
+            lvDanhSach.FullRowSelect = true;
+            lvDanhSach.MultiSelect = true;
 
             ContextMenuStrip ctxGrid = new ContextMenuStrip();
             ctxGrid.Items.Add("Xóa sinh viên đã chọn", null, CtxXoaSinhVien_Click);
-            dgvDanhSach.ContextMenuStrip = ctxGrid;
+            lvDanhSach.ContextMenuStrip = ctxGrid;
         }
 
 
@@ -89,22 +89,22 @@ namespace BaiTap1
 
         private void CtxXoaSinhVien_Click(object sender, EventArgs e)
         {
-            if (dgvDanhSach.SelectedRows.Count == 0)
+            if (lvDanhSach.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Vui lòng chọn ít nhất 1 sinh viên để xóa!", "Thông báo");
                 return;
             }
 
-            var dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa {dgvDanhSach.SelectedRows.Count} sinh viên đã chọn?",
+            var dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa {lvDanhSach.SelectedItems.Count} sinh viên đã chọn?",
                 "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dialogResult == DialogResult.Yes)
             {
                 List<string> listMSSV = new List<string>();
-                foreach (DataGridViewRow row in dgvDanhSach.SelectedRows)
+                foreach (ListViewItem item in lvDanhSach.SelectedItems)
                 {
-                    if (row.Cells[0].Value != null)
-                        listMSSV.Add(row.Cells[0].Value.ToString());
+                    if (!string.IsNullOrEmpty(item.Text))
+                        listMSSV.Add(item.Text);
                 }
 
                 studentManager.DeleteMultiple(listMSSV);
@@ -119,28 +119,29 @@ namespace BaiTap1
 
         private void HienThiDanhSachGrid(List<Student> list)
         {
-            dgvDanhSach.Rows.Clear();
+            lvDanhSach.Items.Clear();
 
             foreach (var s in list)
             {
-                dgvDanhSach.Rows.Add(
-                    s.MSSV,
-                    s.HoTenLot,
-                    s.Ten,
-                    s.NgaySinh.ToString("dd/MM/yyyy"),
-                    s.Lop,
-                    s.CMND,
-                    s.SoDienThoai,
-                    s.DiaChi
-                );
+                ListViewItem item = new ListViewItem(s.MSSV);
+                item.SubItems.Add(s.HoTenLot);
+                item.SubItems.Add(s.Ten);
+                item.SubItems.Add(s.NgaySinh.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(s.Lop);
+                item.SubItems.Add(s.CMND);
+                item.SubItems.Add(s.SoDienThoai);
+                item.SubItems.Add(s.DiaChi);
+
+                lvDanhSach.Items.Add(item);
             }
         }
 
-        private void dgvDanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void lvDanhSach_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (e.RowIndex < 0 || e.RowIndex >= dgvDanhSach.Rows.Count - 1) return;
+            if (lvDanhSach.SelectedItems.Count == 0) return;
 
-            string mssv = dgvDanhSach.Rows[e.RowIndex].Cells[0].Value?.ToString();
+            ListViewItem item = lvDanhSach.SelectedItems[0];
+            string mssv = item.Text;
             var student = studentManager.ListStudents.FirstOrDefault(s => s.MSSV == mssv);
 
             if (student != null)
@@ -279,8 +280,8 @@ namespace BaiTap1
                 clbMonHoc.SetItemChecked(i, false);
             }
 
-            // 4. Bỏ chọn dòng/ô đang được chọn trên DataGridView
-            dgvDanhSach.ClearSelection();
+            // 4. Bỏ chọn dòng/ô đang được chọn trên ListView
+            lvDanhSach.SelectedIndices.Clear();
 
             // 5. Đưa con trỏ chuột về lại ô MSSV
             txtMSSV.Focus();
